@@ -9,3 +9,7 @@ dados = <%= @string_dados.html_safe %>;
 colunas = <%= string_colunas.html_safe %>;
 id_div = '<%= id_div.html_safe %>';
 drawChartLine(dados, colunas, id_div);
+
+<% if @modelo == "Conf." %>
+  $('.mttf-sistema p').text("MTTF Sistema = <%= @mttf_sistema.round(2) %> horas");
+<% end %>

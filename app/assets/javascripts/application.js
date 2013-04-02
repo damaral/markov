@@ -20,6 +20,7 @@ $(document).ready(function(){
 
       $(".chart").toggle();
       $(".loading").toggle();
+      $('.mttf-sistema p').text("");
       $.ajax({
         type: 'GET',
         url: $(this).attr("action"),

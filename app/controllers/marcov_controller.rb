@@ -55,14 +55,19 @@ class MarcovController < ApplicationController
       end
 
       i = 0
+      @mttf_sistema = 0
       while tempo < periodo
         pi_atual = calcula_proximo_pi(pi_atual, p)
+
+        @mttf_sistema += ((1 - pi_atual[3])*delta_t)
 
         @string_dados << "[#{tempo}, #{(1 - pi_atual[3])}], " if i%intervalo_de_plotagem == 0
 
         tempo += delta_t
         i += 1
       end
+
+      puts "MTTF sistema = #{@mttf_sistema}"
 
       @string_dados = @string_dados.slice(0, @string_dados.length - 2)
       @string_dados << "]"
